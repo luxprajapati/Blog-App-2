@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from "react";
+import Header from "./components/Header";
+import Blogs from "./components/Blogs";
+import Pagination from "./components/Pagination";
+import { AppContext } from "./context/AppContext";
+const App = () => {
+  const { fetchBlogPost, darkMode } = useContext(AppContext);
 
-function App() {
+  useEffect(() => {
+    fetchBlogPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={`w-full h-full flex flex-col items-center  justify-center gap-x-1 ${
+        darkMode ? "bg-slate-900" : "bg-white"
+      }`}
+    >
+      <Header></Header>
+      <Blogs></Blogs>
+      <Pagination></Pagination>
     </div>
   );
-}
+};
 
 export default App;
