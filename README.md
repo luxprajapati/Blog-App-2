@@ -1,3 +1,3 @@
 # Lux-BLOGS
 
-[Lux-BLOGS](https://github.com/luxprajapati).
+[Blogs-context-one](https://blog-context-one-luxprajapati.netlify.app/).
