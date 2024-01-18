@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext.js";
 import Spinner from "./Spinner";
+import BlogDetail from "./BlogDetail.js";
 
 const Blogs = () => {
   // consuming the context
@@ -18,31 +19,7 @@ const Blogs = () => {
           <h1>No blogs to show</h1>
         </div>
       ) : (
-        posts.map((post) => (
-          <div key={post.id}>
-            <p className="font-bold text-sm ">{post.title}</p>
-            <p className="text-[14px]">
-              By <span className="italic">{post.author}</span> on{" "}
-              <span className="font-semibold underline">{post.category}</span>
-            </p>
-            <p className="text-[14px]">Posted on {post.date}</p>
-            <p className="text-[16px] mt-[13px]">{post.content}</p>
-            <p className="flex flex-wrap gap-x-2 items-center">
-              {post.tags.map((tag, index) => {
-                return (
-                  <span
-                    className={`text-xs font-semibold font-serif underline cursor-pointer ${
-                      darkMode ? "text-slate-500" : "text-blue-700 "
-                    }`}
-                    key={index}
-                  >
-                    #{tag}
-                  </span>
-                );
-              })}
-            </p>
-          </div>
-        ))
+        posts.map((post) => <BlogDetail key={post.id} post={post}></BlogDetail>)
       )}
     </div>
   );
